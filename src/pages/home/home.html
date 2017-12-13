@@ -1,14 +1,61 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Video List
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="addCard()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-card *ngFor="let card of cards | async">
+        <ion-item>
+            <ion-avatar item-start><img src="{{card.avatarIMG}}"></ion-avatar>
+            <h2>{{card.userName}}</h2>
+            <p>{{card.date}}</p></ion-item>
+
+        {{card.cardUrl}}
+
+        <iframe width="560" height="315" [src]="card.cardUrl | safePipe:{card.cardUrl}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br/>
+
+
+        <button clear ion-button icon-only float-right (click)="deleteCard(card.id)">
+            <ion-icon color="danger" name="trash"></ion-icon>
+        </button>
+        <button clear ion-button icon-only float-right (click)="updateCard(card)">
+            <ion-icon color="primary" name="clipboard"></ion-icon>
+        </button>
+
+
+        <ion-card-content> {{card.cardDesc}}</ion-card-content>
+        <ion-card-content>
+
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div (click)="likesClicked(card)">{{card.likes}} Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div (click)="goToInfo()">Comments</div>
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+
+                </ion-note>
+            </ion-col>
+        </ion-row>
+        <ion-item>
+
+        </ion-item>
+    </ion-card>
 </ion-content>
