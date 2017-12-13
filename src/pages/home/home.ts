@@ -13,7 +13,7 @@ export class HomePage {
 
     cards: any;
 
-    constructor(public navCtrl: NavController, private dataService: DataProvider, public alertCtrl: AlertController, public sanitizer:DomSanitizer) {
+    constructor(public navCtrl: NavController, private dataService: DataProvider, public alertCtrl: AlertController, public sanitizer: DomSanitizer) {
         this.cards = this.dataService.cardList;
 
     }
@@ -97,12 +97,9 @@ export class HomePage {
         prompt.present();
     }
 
-    goToInfo(){
-        this.navCtrl.push("InfoPage");
-    }
+    goToInfo(card) {
+        this.navCtrl.push("InfoPage",card);
+    };
 
-    videoUrl(url){
-        console.log(this.sanitizer.bypassSecurityTrustUrl(url));
-        return this.sanitizer.bypassSecurityTrustUrl(url);
-    }
 }
+

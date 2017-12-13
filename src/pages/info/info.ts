@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 
-/**
- * Generated class for the InfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -14,12 +9,72 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'info.html',
 })
 export class InfoPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    commentList:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoPage');
+    this.commentList=this.navParams.data;
   }
 
+  addComment(){
+      let prompt = this.alertCtrl.create({
+          title: 'Add Comment',
+          message: "Add your comment below",
+          inputs: [
+              {
+                  name: 'Comment',
+                  placeholder: 'Add Comment Here'
+              }
+          ],
+          buttons: [
+              {
+                  text: 'Cancel',
+                  handler: data => {
+                      console.log('Cancel clicked');
+                  }
+              },
+              {
+                  text: 'Save',
+                  handler: data => {
+
+                  }
+              }
+          ]
+      });
+      prompt.present();
+}
+
+  editComment(){
+      let prompt = this.alertCtrl.create({
+          title: 'Edit Your Comment',
+          message: "Change the Comment below",
+          inputs: [
+              {
+                  name: 'commentDesc',
+                  placeholder:"comment goes here "
+              },
+          ],
+          buttons: [
+              {
+                  text: 'Cancel',
+                  handler: data => {
+                      console.log('Cancel clicked');
+                  }
+              },
+              {
+                  text: 'Save',
+                  handler: data => {
+
+                  }
+              }
+          ]
+      });
+      prompt.present();
+  }
+
+  deleteComment(){
+
+  }
 }

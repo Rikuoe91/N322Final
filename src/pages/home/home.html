@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="dark">
         <ion-title>
             Video List
         </ion-title>
@@ -12,17 +12,19 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card *ngFor="let card of cards | async">
-        <ion-item>
-            <ion-avatar item-start><img src="{{card.avatarIMG}}"></ion-avatar>
+    <ion-card *ngFor="let card of cards | async" color="dark">
+        <ion-item color="dark">
+            <ion-avatar item-start ><img src="{{card.avatarIMG}}"></ion-avatar>
             <h2>{{card.userName}}</h2>
             <p>{{card.date}}</p></ion-item>
 
-        {{card.cardUrl}}
+        <!--{{card.cardUrl}}-->
 
-        <iframe width="560" height="315" src="videoUrl(card.cardUrl)" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br/>
-
-
+  <!--      <iframe width="560" height="500" [src]="domSanitizer.bypassSecurityTrustResourceUrl(card.cardUrl)" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br/>
+-->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KrJMWAKi64M" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        <br/>
+        <br/>
         <button clear ion-button icon-only float-right (click)="deleteCard(card.id)">
             <ion-icon color="danger" name="trash"></ion-icon>
         </button>
@@ -45,7 +47,7 @@
             <ion-col>
                 <button ion-button icon-left clear small>
                     <ion-icon name="text"></ion-icon>
-                    <div (click)="goToInfo()">Comments</div>
+                    <div (click)="goToInfo(card)">Comments</div>
                 </button>
             </ion-col>
             <ion-col center text-center>
@@ -54,8 +56,5 @@
                 </ion-note>
             </ion-col>
         </ion-row>
-        <ion-item>
-
-        </ion-item>
     </ion-card>
 </ion-content>

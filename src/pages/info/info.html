@@ -5,14 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Comments</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>
+      Video List
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addComment()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  Comment Section Coming Soon
+  <ion-list>
+    <ion-item-sliding color="dark">
+      <ion-item color="dark">
+        <p>This is were the comments will go</p>
+      </ion-item>
+      <ion-item-options side="right" color="dark">
+        <button ion-button color="primary" (click)="editComment()">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="deleteComment()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
