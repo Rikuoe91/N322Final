@@ -101,5 +101,11 @@ export class HomePage {
         this.navCtrl.push("InfoPage",card);
     };
 
+
+    public getSantizeUrl(url : string) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+
+
 }
 
