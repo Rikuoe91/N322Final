@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {DataProvider} from "../../providers/data/data";
+import { DomSanitizer} from '@angular/platform-browser';
 
 
 @IonicPage()
@@ -12,7 +13,7 @@ export class HomePage {
 
     cards: any;
 
-    constructor(public navCtrl: NavController, private dataService: DataProvider, public alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, private dataService: DataProvider, public alertCtrl: AlertController, public sanitizer:DomSanitizer) {
         this.cards = this.dataService.cardList;
 
     }
@@ -100,4 +101,8 @@ export class HomePage {
         this.navCtrl.push("InfoPage");
     }
 
+    videoUrl(url){
+        console.log(this.sanitizer.bypassSecurityTrustUrl(url));
+        return this.sanitizer.bypassSecurityTrustUrl(url);
+    }
 }

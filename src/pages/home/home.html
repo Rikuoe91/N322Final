@@ -20,7 +20,7 @@
 
         {{card.cardUrl}}
 
-        <iframe width="560" height="315" [src]="card.cardUrl | safePipe:{card.cardUrl}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br/>
+        <iframe width="560" height="315" src="videoUrl(card.cardUrl)" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br/>
 
 
         <button clear ion-button icon-only float-right (click)="deleteCard(card.id)">
